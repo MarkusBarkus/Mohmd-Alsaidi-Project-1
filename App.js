@@ -1,12 +1,28 @@
-import { useState } from 'react';
-import { StatusBar } from 'expo-status-bar';
-import { View, Button, TextInput } from 'react-native';
+import { useState, useEffect } from 'react';
+import { StatusBar } from 'expo-status-bar'; 
+import { SafeAreaView, View, Button, TextInput, Text } from 'react-native';
+import { useFonts } from 'expo-font';
+
+
+import * as SplashScreen from 'expo-splash-screen'; 
 
 import ListItem from './components/ListItem.js';
 
 import style from './style.js';
 
+SplashScreen.preventAutoHideAsync();
+
 function App() {
+
+  const [loaded, error] = useFonts({
+      'Bitcount': require('./assets/fonts/Bitcount.ttf'),
+    });
+    
+    useEffect(() => {
+      if (loaded || error) {
+        SplashScreen.hideAsync();
+      }
+    }, [loaded, error]);
 
     let [nextID, setNextID] = useState(1);
     let [listItems, setListItems] = useState([]);
@@ -36,8 +52,9 @@ function App() {
         setNewItemText(text);
     }
 
-    return (<View style={style.app}>
-        <StatusBar style="auto" />
+    return (<SafeAreaView style={style.app}>
+        <StatusBar style="auto"/>
+        <Text style={style.header}>Mohmd Alsaidi LAB 2</Text>
         <ListItem items={listItems} deleteItemCallback={removeItemFromList}></ListItem>
         <TextInput style={style.inputText} value={newItemText} onChangeText={onTextChanged}></TextInput>
         <View style={style.button} >
@@ -46,7 +63,7 @@ function App() {
         <View style={style.button} >
             <Button title='CLEAR LIST' onPress={clearList}></Button>
         </View>
-    </View>);
+    </SafeAreaView>);
 }
 
 export default App;
