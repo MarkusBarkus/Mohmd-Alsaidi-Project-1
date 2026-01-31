@@ -4,8 +4,8 @@ export const MARGIN = 10;
 
 export const palette = {
     background: '#06962f',
-    border: '#acb209',
-    text: '#0c0ce0'
+    border: '#77b209',
+    text: '#1f1f96'
 };
 
 export default StyleSheet.create({
@@ -31,10 +31,33 @@ export default StyleSheet.create({
         fontFamily: 'PermanentMarker',
         flex: 1
     },
-    list: {
-        backgroundColor: palette.background,
-        fontFamily: 'PermanentMarker',
-        flex: 1
+    button: {
+        margin: MARGIN,
+        borderWidth: 1,
+        borderBottomWidth: 4,
+        borderRightWidth: 4,
+        borderRadius: 12,
+        color: palette.text,
+        borderColor: palette.border,
+        padding: 10,
+        alignItems: 'center',
+    },
+    buttonText: {
+        fontSize: 20,
+        fontFamily: 'PermanentMarker-Regular',
+        color: palette.text,
+        textAlign: 'center'
+    },
+    buttonPressed: {
+        margin: MARGIN,
+        marginTop: MARGIN + 2,
+        borderWidth: 1,
+        borderBottomWidth: 2,
+        borderRightWidth: 2,
+        borderRadius: 12,
+        borderColor: palette.border,
+        padding: 10,
+        alignItems: 'center',
     },
     listItem: {
         margin: MARGIN,
@@ -58,8 +81,5 @@ export default StyleSheet.create({
         padding: 10,
         fontSize: 24,
         color: palette.text
-    },
-    button: {
-        margin: MARGIN
     }
 });

@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react';
 import { StatusBar } from 'expo-status-bar'; 
-import { SafeAreaView, View, Button, TextInput, Text } from 'react-native';
+import { SafeAreaView, View, TextInput, Text } from 'react-native';
 import { useFonts } from 'expo-font';
 
+import Button from './components/Button.js';
 
 import * as SplashScreen from 'expo-splash-screen'; 
 
@@ -57,12 +58,8 @@ function App() {
         <Text style={style.header}>Mohmd Alsaidi LAB 2</Text>
         <ListItem items={listItems} deleteItemCallback={removeItemFromList}></ListItem>
         <TextInput style={style.inputText} value={newItemText} onChangeText={onTextChanged}></TextInput>
-        <View style={style.button} >
-            <Button title='ADD ITEM' onPress={addItemToList}></Button>
-        </View>
-        <View style={style.button} >
-            <Button title='CLEAR LIST' onPress={clearList}></Button>
-        </View>
+            <Button text="ADD ITEM" onPress={addItemToList}></Button>
+            <Button text='CLEAR LIST' onPress={clearList}></Button>
     </SafeAreaView>);
 }
 
