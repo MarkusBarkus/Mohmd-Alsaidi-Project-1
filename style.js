@@ -28,8 +28,29 @@ export default StyleSheet.create({
     app: {
         marginTop: 50,
         backgroundColor: palette.background,
-        fontFamily: 'PermanentMarker',
+        fontFamily: 'Bitcount',
         flex: 1
+    },
+    prompt: {
+        margin: MARGIN * 4,
+        alignSelf: 'stretch',
+        borderWidth: 2,
+        borderRadius: 12,
+        borderBottomWidth: 4,
+        borderRightWidth: 4,
+        borderColor: palette.border,
+        backgroundColor: palette.background,
+    },
+    promptText: {
+        margin: MARGIN,
+        fontSize: 20,
+        fontFamily: 'Bitcount',
+        color: palette.text,
+        textAlign: 'center'
+    },
+    buttonRow: {
+        flexDirection: 'row',
+        justifyContent: 'center'
     },
     button: {
         margin: MARGIN,
@@ -41,10 +62,11 @@ export default StyleSheet.create({
         borderColor: palette.border,
         padding: 10,
         alignItems: 'center',
+        fontFamily: 'Bitcount',
     },
     buttonText: {
         fontSize: 20,
-        fontFamily: 'PermanentMarker-Regular',
+        fontFamily: 'Bitcount',
         color: palette.text,
         textAlign: 'center'
     },
@@ -58,24 +80,25 @@ export default StyleSheet.create({
         borderColor: palette.border,
         padding: 10,
         alignItems: 'center',
+        fontFamily: 'Bitcount',
     },
     listItem: {
         margin: MARGIN,
         borderWidth: 2,
         borderRadius: 12,
-        fontFamily: 'PermanentMarker',
+        fontFamily: 'Bitcount',
         borderColor: palette.border,
         padding: 10
     },
     listItemText: {
         fontSize: 24,
-        fontFamily: 'PermanentMarker',
+        fontFamily: 'Bitcount',
         color: palette.text
     },
     inputText: {
         margin: MARGIN,
         borderWidth: 2,
-        fontFamily: 'PermanentMarker',
+        fontFamily: 'Bitcount',
         borderRadius: 12,
         borderColor: palette.border,
         padding: 10,
