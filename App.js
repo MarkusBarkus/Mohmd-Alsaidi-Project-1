@@ -15,6 +15,8 @@ import style from './style.js';
 
 import DeleteItem from './components/prompts/DeleteItem.js';
 
+import AddItem from './components/prompts/AddItem.js';
+
 SplashScreen.preventAutoHideAsync();
 
 
@@ -38,12 +40,12 @@ function App() {
 
     let clearList = () => setListItems([]);
 
-    function addItemToList() {
-        if (newItemText === '') return;
-        let newItem = { text: newItemText, id: nextID };
+    function addItemToList(text) {
+        if (text === '') return;
+        let newItem = { text, id: nextID };
         setNextID(nextID + 1);
         setListItems([...listItems, newItem]);
-        setNewItemText('');
+        closeModal();
     }
 
     const confirmDeleteAll = () =>
@@ -66,11 +68,6 @@ function App() {
         setListItems(arrayWithRemovedItem);
     }
 
-    let [newItemText, setNewItemText] = useState('');
-    function onTextChanged(text) {
-        setNewItemText(text);
-    }
-
     // Modal State
     const [modalVisible, setModalVisible] = useState(false);
     const [modalContentKey, setModalContentKey] = useState();
@@ -90,6 +87,11 @@ function App() {
         openModal();
     }
 
+    const promptAddItem = () => {
+        setModalContentKey('add-item');
+        openModal();
+    }
+
     
 
     return (<SafeAreaView style={style.app}>
@@ -101,9 +103,7 @@ function App() {
         
         <ListItem items={listItems} deleteItemCallback={promptDeleteItem}></ListItem>
         
-
-        <TextInput style={style.inputText} value={newItemText} onChangeText={onTextChanged}></TextInput>
-            <Button text="ADD ITEM " onPress={addItemToList}></Button>
+            <Button text="ADD ITEM " onPress={promptAddItem}></Button>
             <Button text='CLEAR LIST ' onPress={confirmDeleteAll}></Button>
             <Modal visible={modalVisible} onRequestClose={closeModal}
             content={
@@ -119,6 +119,10 @@ function App() {
                             closeModal();
                         }}
                         no={closeModal}
+                    />,
+                    'add-item': <AddItem
+                        add={text => addItemToList(text)}
+                        cancel={closeModal}
                     />
 
                 }[modalContentKey]
